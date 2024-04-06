@@ -1,3 +1,6 @@
+body{
+  //background-color: #20254d;
+}
 .App {
   text-align: center;
 }
@@ -35,4 +38,31 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+#app {
+  display: flex;
+}
+
+#app-calendar{
+  margin: 15px;
+}
+
+#settings{
+  height:  30px;
+  text-align: center;
+}
+
+#calendar {
+  border-radius: 10px;
+}
+
+#buttonEditor {
+  width: 350px;
+  height: 50px;
+  margin-top: 15px;
+}
+
+#app-editor{
+  margin: 15px;
 }

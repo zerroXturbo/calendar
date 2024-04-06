@@ -7,7 +7,11 @@ const Calendar = props => {
     const [value, onChange] = useState(new Date());
     return (
         <div>
-            <CalendarReact onClickDay={props.changeDay} onChange={onChange} value={value} />
+            <CalendarReact
+                onClickDay={props.changeDay}
+                onChange={onChange}
+                value={value}
+            />
         </div>);
 }
 
