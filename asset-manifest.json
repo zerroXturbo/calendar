@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/calendar/static/css/main.ee559b35.css",
-    "main.js": "/calendar/static/js/main.58ef8f60.js",
+    "main.css": "/calendar/static/css/main.1d6b716b.css",
+    "main.js": "/calendar/static/js/main.7f5b9ea1.js",
     "static/js/453.cb5cdc64.chunk.js": "/calendar/static/js/453.cb5cdc64.chunk.js",
     "index.html": "/calendar/index.html",
-    "main.ee559b35.css.map": "/calendar/static/css/main.ee559b35.css.map",
-    "main.58ef8f60.js.map": "/calendar/static/js/main.58ef8f60.js.map",
+    "main.1d6b716b.css.map": "/calendar/static/css/main.1d6b716b.css.map",
+    "main.7f5b9ea1.js.map": "/calendar/static/js/main.7f5b9ea1.js.map",
     "453.cb5cdc64.chunk.js.map": "/calendar/static/js/453.cb5cdc64.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ee559b35.css",
-    "static/js/main.58ef8f60.js"
+    "static/css/main.1d6b716b.css",
+    "static/js/main.7f5b9ea1.js"
   ]
 }
