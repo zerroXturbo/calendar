@@ -13,7 +13,7 @@ class App extends React.Component {
     btnState: undefined
   }
   dateID = "";
-  btnState =  new BtnState(0);
+  btnState =  new BtnState(1);
 
   componentDidMount = async  () => {
     document.querySelector('.quill').style.display = 'none';
@@ -90,11 +90,11 @@ class App extends React.Component {
 
   render() {
     return (
-        <div>
+        <div id={'app'}>
           <div id={'app-calendar'}>
-            <Time />
+            <Time id={'time'} />
             <Calendar changeDay={this.onChangeDay}/>
-            <Form
+            <Form id={'button'}
                 btnPush={this.onBtnPush}
                 value={this.state.btnState}
             />

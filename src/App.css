@@ -37,4 +37,27 @@
   }
 }
 
+body {
+  background-color: #20254d;
+}
 
+#app {
+  display: flex;
+}
+
+#app-calendar{
+  margin: 15px;
+}
+
+#time{
+  height:  30px;
+  text-align: center;
+}
+
+#calendar {
+  border-radius: 10px;
+}
+
+#app-editor{
+  margin: 15px;
+}
