@@ -1,0 +1,32 @@
+#img-container {
+    box-sizing: border-box;
+    height: 100px;
+    width: 500px;
+    position: relative;
+    background-color: #494CA8;
+    color: white;
+    border-radius: 15px;
+    margin: 0 0 15px 0;
+}
+
+#img-container img {
+    max-width: 80%;
+    max-height: 80%;
+    margin: 10px;
+}
+#img-container input {
+
+}
+input[
+type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    float: right;
+    display: inline-block;
+    padding: 32px;
+    cursor: pointer;
+}
+
+

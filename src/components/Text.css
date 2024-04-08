@@ -1,7 +1,21 @@
-#text{
+#text {
+    box-sizing: border-box;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    height: 100%;
+    width: 500px;
+    margin: 0;
+    position: relative;
     background-color: #494CA8;
     color: white;
     border-radius: 15px;
-    width: 500px;
-    height: 775px;
+    line-height: 1.42;
+    outline: none;
+    overflow-y: auto;
+    padding: 12px 15px;
+    tab-size: 4;
+    -moz-tab-size: 4;
+    text-align: left;
+    white-space: pre-wrap;
+    word-wrap: break-word;
 }

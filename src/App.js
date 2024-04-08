@@ -6,6 +6,7 @@ import TextEditor from './components/TextEditor';
 import Form from './components/Form';
 import Text from './components/Text';
 import Time from './components/Time';
+import Images from './components/Images';
 
 
 class App extends React.Component {
@@ -100,6 +101,7 @@ class App extends React.Component {
             />
           </div>
           <div id={'app-editor'}>
+            <Images date={this.dateID} />
             <Text />
             <TextEditor />
           </div>
