@@ -2,46 +2,43 @@ import React, {useState} from 'react';
 import Popup from "reactjs-popup";
 import './Images.css'
 
-const Images = props => {
+const Images = () => {
     const [, setDate] = useState(new Date());
     const [files] = useState([]);
     const handleChange = (event) => {
+        event.preventDefault();
         const file = event.target.files[0];
         if (!file) return
+        const url = URL.createObjectURL(file);
 
-        files.push(URL.createObjectURL(event.target.files[0]));
+        files.push(url);
+        console.log(files)
+
         setDate(new Date());
-        save(file);
+
+        getBase64(file).then(base64 => {
+            localStorage["fileBase64"] = base64;
+            console.debug("file stored",base64);
+        });
     }
 
     const onChange = (event) => {
         console.log(event.target);
     }
 
-    const save = (file) => {
-        const elementImg = document.createElement('img');
-        elementImg.setAttribute('src', file);
-        const imgDate = getBase64Image(elementImg);
-        localStorage.setItem("img_" + props.date + "_" + files.length, imgDate);
-
-        let filesName = "";
-        files.forEach((item, i) => {
-            filesName += "img_" + props.date + "_" + i + " ";
-        })
-        localStorage.setItem(props.date, filesName);
+    const getBase64 = (file) => {
+        return new Promise((resolve,reject) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+            reader.readAsDataURL(file);
+        });
     }
 
-    const getBase64Image = (img) => {
-        let canvas = document.createElement("canvas");
-        canvas.width = img.width;
-        canvas.height = img.height;
-
-        let ctx = canvas.getContext("2d");
-        ctx.drawImage(img, 0, 0);
-
-        let dataURL = canvas.toDataURL("image/png");
-
-        return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+    const getSrc = () => {
+        const dataImage = localStorage.getItem('fileBase64');
+        console.log("data:image/png;base64," + dataImage)
+        return  dataImage;
     }
 
     return (
@@ -58,18 +55,16 @@ const Images = props => {
                     </div>
                 </Popup>
             ))}
-            {props.images.map((file, i) => (
-                <Popup
-                    key={i}
-                    trigger={<button className="button-img">
-                        <img className="image" src={file} alt="N/A" onClick={onChange}/>
-                    </button>}
-                    position="bottom left">
-                    <div>
-                        <img className="image-popup" src={file} alt="N/A"/>
-                    </div>
-                </Popup>
-            ))}
+
+            <Popup
+                trigger={<button className="button-img">
+                    <img className="image" src={getSrc()} alt="N/A" onClick={onChange}/>
+                </button>}
+                position="bottom left">
+                <div>
+                    <img className="image-popup" src={getSrc()} alt="N/A"/>
+                </div>
+            </Popup>
 
             <label htmlFor="file-upload" className="custom-file-upload">
                 <svg width="20" height="29" viewBox="0 0 20 29" fill="none" xmlns="http://www.w3.org/2000/svg">
