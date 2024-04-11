@@ -15,11 +15,26 @@ class App extends React.Component {
   }
   dateID = "";
   btnState =  new BtnState(1);
+  images = [];
 
   componentDidMount = async  () => {
     document.querySelector('.quill').style.display = 'none';
     this.dateID = this.getDateId(new Date());
     await this.changeText();
+    await this.loadImages();
+  }
+
+  loadImages = async () => {
+    const storedDate = localStorage.getItem(this.dateID + "_img");
+
+    if (storedDate == null) return;
+    const filesName = storedDate.split(" ");
+    for  (let i = 0; i < filesName.length - 1; i++) {
+
+      const src = "data:image/png;base64," + localStorage.getItem(filesName[i]);
+      console.log(src)
+      this.images.push(src);
+    }
   }
 
   changeText = async () => {
@@ -101,7 +116,7 @@ class App extends React.Component {
             />
           </div>
           <div id={'app-editor'}>
-            <Images date={this.dateID} />
+            <Images date={this.dateID + "_img"} images={this.images}/>
             <Text />
             <TextEditor />
           </div>

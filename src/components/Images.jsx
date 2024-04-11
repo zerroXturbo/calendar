@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import Popup from "reactjs-popup";
 import './Images.css'
 
 const Images = props => {
@@ -6,16 +7,70 @@ const Images = props => {
     const [files] = useState([]);
     const handleChange = (event) => {
         const file = event.target.files[0];
-        if (file)
-            files.push(URL.createObjectURL(event.target.files[0]));
+        if (!file) return
+
+        files.push(URL.createObjectURL(event.target.files[0]));
         setDate(new Date());
+        save(file);
+    }
+
+    const onChange = (event) => {
+        console.log(event.target);
+    }
+
+    const save = (file) => {
+        const elementImg = document.createElement('img');
+        elementImg.setAttribute('src', file);
+        const imgDate = getBase64Image(elementImg);
+        localStorage.setItem("img_" + props.date + "_" + files.length, imgDate);
+
+        let filesName = "";
+        files.forEach((item, i) => {
+            filesName += "img_" + props.date + "_" + i + " ";
+        })
+        localStorage.setItem(props.date, filesName);
+    }
+
+    const getBase64Image = (img) => {
+        let canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
+
+        let ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+
+        let dataURL = canvas.toDataURL("image/png");
+
+        return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
     }
 
     return (
         <div id="img-container">
             {files.map((file, i) => (
-                <img id={"img_" + i} src={file} alt="N/A"/>
+                <Popup
+                    key={i}
+                    trigger={<button className="button-img">
+                        <img className="image" src={file} alt="N/A" onClick={onChange}/>
+                    </button>}
+                    position="bottom left">
+                    <div>
+                        <img className="image-popup" src={file} alt="N/A"/>
+                    </div>
+                </Popup>
             ))}
+            {props.images.map((file, i) => (
+                <Popup
+                    key={i}
+                    trigger={<button className="button-img">
+                        <img className="image" src={file} alt="N/A" onClick={onChange}/>
+                    </button>}
+                    position="bottom left">
+                    <div>
+                        <img className="image-popup" src={file} alt="N/A"/>
+                    </div>
+                </Popup>
+            ))}
+
             <label htmlFor="file-upload" className="custom-file-upload">
                 <svg width="20" height="29" viewBox="0 0 20 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path // ну svg ну и что
