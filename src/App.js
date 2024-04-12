@@ -10,34 +10,20 @@ import Images from './components/Images';
 
 
 class App extends React.Component {
+
   state = {
+    test: "",
     btnState: undefined
   }
   dateID = "";
   btnState =  new BtnState(1);
-  images = [];
 
-  componentDidMount = async  () => {
+  componentDidMount =  () => {
     document.querySelector('.quill').style.display = 'none';
     this.dateID = this.getDateId(new Date());
-    await this.changeText();
-    await this.loadImages();
+    this.changeText();
   }
-
-  loadImages = async () => {
-    const storedDate = localStorage.getItem(this.dateID + "_img");
-
-    if (storedDate == null) return;
-    const filesName = storedDate.split(" ");
-    for  (let i = 0; i < filesName.length - 1; i++) {
-
-      const src = "data:image/png;base64," + localStorage.getItem(filesName[i]);
-      console.log(src)
-      this.images.push(src);
-    }
-  }
-
-  changeText = async () => {
+  changeText =  () => {
     document.querySelector('.quill').style.display = 'none';
     const textEl = document.querySelector('.text');
     textEl.style.display = 'block';
@@ -102,6 +88,7 @@ class App extends React.Component {
     event.preventDefault();
     this.dateID = this.getDateId(day);
     await this.changeText();
+    this.setState({test: 'test'});
   }
 
   render() {
@@ -116,7 +103,7 @@ class App extends React.Component {
             />
           </div>
           <div id={'app-editor'}>
-            <Images date={this.dateID + "_img"} images={this.images}/>
+            <Images date={this.dateID + "_name_img"}/>
             <Text />
             <TextEditor />
           </div>
