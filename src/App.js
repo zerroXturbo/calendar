@@ -24,6 +24,7 @@ class App extends React.Component {
     this.changeText();
   }
   changeText =  () => {
+    document.querySelector('.ql-editor').innerHTML = "";
     document.querySelector('.quill').style.display = 'none';
     const textEl = document.querySelector('.text');
     textEl.style.display = 'block';

@@ -8,17 +8,12 @@ const Images = (props) => {
     const [names] = useState([]);
 
     React.useEffect(() => {
-        console.log('useEffect')
+        console.log('test')
         const namesStorage = localStorage.getItem(props.date);
-        if (!namesStorage) {
-            files.length = 0;
-            names.length = 0;
-            return;
-        }
-        const namesArray = namesStorage.split(' ');
-        if (namesArray.length === names.length) return;
         names.length = 0;
         files.length = 0;
+        if (!namesStorage) {return;}
+        const namesArray = namesStorage.split(' ');
         namesArray.forEach(name => {
             names.push(name);
             files.push(localStorage.getItem(name));
