@@ -14,7 +14,7 @@ const Time = () => {
 
     return(
         <div>
-            <h2 className="time">Current Time: {showTime.toString()}</h2>
+            <h2 className="time">Текущее время: {showTime.toString()}</h2>
         </div>
     )
 }
