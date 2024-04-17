@@ -106,7 +106,9 @@ class App extends React.Component {
           <div id={'app-editor'}>
             <Images date={this.dateID + "_name_img"}/>
             <Text />
-            <TextEditor />
+            <div id={'editor'}>
+              <TextEditor />
+            </div>
           </div>
         </div>
     );
