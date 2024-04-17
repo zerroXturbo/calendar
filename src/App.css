@@ -57,11 +57,6 @@ body {
 #calendar {
   border-radius: 10px;
 }
-
-#app-editor{
-  margin: 15px;
-}
-
-#editor {
+#editor{
   margin-top: 50px;
 }
